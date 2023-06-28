@@ -9,7 +9,7 @@ Train CNN, MLP, ResNet18, RNN, LSTM on CSI data to classify behavior.
 
 # Dataset
 CSI data of 30*900 every sample,there exist 600 samples.You can change to your own dataset by modifing `dataset_process.py` and `main.WifiDataset()`.
-Dataset using here is not offered!
+Dataset used here is not offered!
 # Run
 `python main.py --model MLP --epoch 50 --gpu cuda:0 --batch_size 128`
 for `--model`, you can choose from `MLP, ResNet18, RNN, LSTM, CNN_GRU`.
