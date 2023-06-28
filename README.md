@@ -15,10 +15,8 @@ Dataset used here is not offered!
 For `--model`, you can choose from `MLP, ResNet18, RNN, LSTM, CNN_GRU`.<br />
 <br />
 If you want to train model from scratch, add `--fromScratch` parameter, for example:<br />
-<br />
 `python main.py --model MLP --epoch 50 --gpu cuda:0 --batch_size 128 --fromScratch`<br />
 Or using follow to train a model from checkpoint:<br />
-<br />
 `python main.py --model MLP --epoch 50 --gpu cuda:0 --batch_size 128 --checkpoint ./checkpoint/checkpoint.pth`<br />
 # Inference
 Only inference using saved checkpoint:<br />
