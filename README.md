@@ -12,10 +12,10 @@ CSI data of 30*900 every sample,there exist 600 samples.You can change to your o
 Dataset used here is not offered!
 # Run
 `python main.py --model MLP --epoch 50 --gpu cuda:0 --batch_size 128`<br />
-for `--model`, you can choose from `MLP, ResNet18, RNN, LSTM, CNN_GRU`.<br />
-if you want to train model from scratch, add `--fromScratch` parameter, for example:<br />
+For `--model`, you can choose from `MLP, ResNet18, RNN, LSTM, CNN_GRU`.<br />
+If you want to train model from scratch, add `--fromScratch` parameter, for example:<br />
 `python main.py --model MLP --epoch 50 --gpu cuda:0 --batch_size 128 --fromScratch`<br />
-or using follow to train a model from checkpoint:<br />
+Or using follow to train a model from checkpoint:<br />
 `python main.py --model MLP --epoch 50 --gpu cuda:0 --batch_size 128 --checkpoint ./checkpoint/checkpoint.pth`<br />
 # Inference
 Only inference using saved checkpoint:<br />
