@@ -2,10 +2,10 @@
 Train CNN, MLP, ResNet18, RNN, LSTM on CSI data to classify behavior.
 
 # Requirements
-'python==3.11.3'
-'torch==2.0.0+cu117'
-'torchvision==0.15.1+cu117'
-'pandas==2.0.2'
+`python==3.11.3`
+`torch==2.0.0+cu117`
+`torchvision==0.15.1+cu117`
+`pandas==2.0.2`
 
 # Dataset
 CSI data of 30*900 every sample,there exist 600 samples.You can change to your own dataset by modifing and runing dataset_process.py.
