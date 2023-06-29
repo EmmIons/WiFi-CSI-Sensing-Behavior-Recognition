@@ -13,6 +13,7 @@ torch.set_default_dtype(torch.float64)
 class MLP(nn.Module):
     def __init__(self):
         super(MLP, self).__init__()
+        # input of size : [batch_size, 30, 900]
         self.fc = nn.Sequential(
             nn.Linear(30 * 900, 2048),
             nn.ReLU(),
@@ -21,6 +22,7 @@ class MLP(nn.Module):
             nn.ReLU(),
             nn.Linear(128, 7)
         )
+        # Out put one-hot vectors
         self.activ = nn.Softmax(dim=1)
 
     def forward(self, x):
@@ -30,6 +32,7 @@ class MLP(nn.Module):
 
 
 class Block(nn.Module):
+    # Used in ResNet18
     expansion = 1
 
     def __init__(self, in_channels, out_channels, i_downsample=None, stride=1):
@@ -60,6 +63,8 @@ class Block(nn.Module):
 class ResNet18(nn.Module):
     def __init__(self, ResBlock=Block, layer_list=[2, 2, 2, 2], num_classes=7):
         super(ResNet18, self).__init__()
+
+        # reshape input from [batch_size, 1, 30, 900] to [batch_size, 3, 32, 32]
         self.reshape = nn.Sequential(
             nn.ConvTranspose2d(1, 3, (12, 2), stride=(4, 1), padding=0, output_padding=0),
             nn.ReLU(),
@@ -122,7 +127,7 @@ class ResNet18(nn.Module):
 class RNN(nn.Module):
     def __init__(self,hidden_dim=64):
         super(RNN, self).__init__()
-        self.rnn = nn.RNN(30, hidden_dim,num_layers=1)
+        self.rnn = nn.RNN(30, hidden_dim, num_layers=1)
         self.fc = nn.Linear(hidden_dim, 7)
         self.activ = nn.Softmax(dim=1)
 
@@ -135,8 +140,8 @@ class RNN(nn.Module):
 
 
 class LSTM(nn.Module):
-    def __init__(self,hidden_dim=64):
-        super(LSTM,self).__init__()
+    def __init__(self, hidden_dim=64):
+        super(LSTM, self).__init__()
         self.lstm = nn.LSTM(30, hidden_dim, num_layers=1)
         self.fc = nn.Linear(hidden_dim, 7)
         self.activ = nn.Softmax(dim=1)
@@ -151,7 +156,8 @@ class LSTM(nn.Module):
 
 class CNN_GRU(nn.Module):
     def __init__(self):
-        super(CNN_GRU,self).__init__()
+        super(CNN_GRU, self).__init__()
+        # input [batch_size, 900, 30]
         self.encoder = nn.Sequential(
             nn.Conv1d(900, 900, 2, 2),
             nn.ReLU(True),
@@ -167,12 +173,10 @@ class CNN_GRU(nn.Module):
         )
 
     def forward(self, x):
-        # batch x 1 x 250 x 90
+        # x :[batch, 1, 30, 900]
         x = x.view(-1, 900, 30)
         x = self.encoder(x)
-        # batch x 250 x 8
         x = x.permute(1, 0, 2)
-        # 250 x batch x 8
         _, ht = self.gru(x)
         outputs = self.classifier(ht[-1])
         return outputs
