@@ -1,5 +1,5 @@
 # WiFi-CSI-Sensing-Behavior-Recognition
-Train CNN, MLP, ResNet18, RNN, LSTM on CSI data to classify behavior.
+Train CNN, MLP, ResNet18, RNN, LSTM on CSI data to classify 7 behaviors.`walk, stand, sit, run, fall, bow, null`
 
 # Requirements
 `python==3.11.3`<br />
