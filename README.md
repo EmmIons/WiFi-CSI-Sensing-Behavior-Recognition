@@ -4,7 +4,6 @@ Train CNN, MLP, ResNet18, RNN, LSTM on CSI data to classify 7 behaviors.`walk, s
 # Requirements
 `python==3.11.3`<br />
 `torch==2.0.0+cu117`<br />
-`torchvision==0.15.1+cu117`<br />
 `pandas==2.0.2`<br />
 
 # Dataset
